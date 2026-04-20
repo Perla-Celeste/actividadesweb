@@ -1,0 +1,121 @@
+/* Animaciones individuales */
+    body {
+        background-color: black;
+    }
+    .rotar {
+        width: 250px;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        animation: 
+        paseoEspacial 20s infinite ease-in-out, 
+        rotarAnim 10s infinite linear;
+}
+
+.estrella {
+    position: absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid rgb(255, 225, 0);
+    border-left: 100px solid transparent;
+    animation: 
+    flotarYEscalar 6s infinite ease-in-out, 
+    parpadeoColor 4s infinite alternate;
+}
+
+.estrella:before, .estrella:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.estrella:before {
+    border-bottom: 80px solid rgb(255, 225, 0);
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    top: -45px;
+    left: -65px;
+    transform: rotate(-35deg);
+}
+
+.estrella:after {
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid rgb(255, 225, 0);
+    border-left: 100px solid transparent;
+    top: 3px;
+    left: -105px;
+    transform: rotate(-70deg);
+}
+
+/* Posiciones individuales */
+        #e1 { top: 10%; left: 10%; animation-delay: -1s; }
+        #e2 { top: 80%; left: 25%; animation-delay: -1s; }
+        #e3 { top: 60%; left: 85%; animation-delay: -2s; }
+        #e4 { top: 40%; left: 40%; animation-delay: -3s; }
+        #e5 { top: 30%; left: 70%; animation-delay: -1s; }
+        #e6 { top: 75%; left: 55%; animation-delay: -2s; }
+        #e7 { top: 25%; left: 5%; animation-delay: -3s; }
+        #e8 { top: 65%; left: 60%; animation-delay: -4s; }
+
+@keyframes paseoEspacial {
+    0% {
+        top: 50%;
+        left: 50%;
+    }
+    25% {
+        top: 20%;
+        left: 60%;
+    }
+    50% {
+        top: 80%;
+        left: 40%;
+    }
+    75% {
+        top: 30%;
+        left: 10%;
+    }
+    100% {
+        top: 50%;
+        left: 50%;
+    }
+}
+
+@keyframes rotarAnim {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes escalarAnim {
+    0%, 100% { transform: rotate(35deg) scale(0.3); }
+    50% { transform: rotate(35deg) scale(0.6); }
+}
+
+@keyframes flotarYEscalar {
+    0%, 100% {
+        transform: rotate(35deg) scale(0.3) translateY(0);
+    }
+    50% {
+        transform: rotate(35deg) scale(0.5) translateY(-30px);
+    }
+}
+
+@keyframes parpadeoColor {
+    0%, 100% { 
+        border-bottom-color: rgb(255, 225, 0); 
+        filter: drop-shadow(0 0 5px rgba(255, 225, 0, 0.5));
+    }
+    50% { 
+        border-bottom-color: rgb(255, 255, 255); 
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+    }
+}
